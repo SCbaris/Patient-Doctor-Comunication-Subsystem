@@ -1,0 +1,10 @@
+.blinking{
+    animation:blinking 1s infinite;
+    animation-direction: alternate; 
+}
+@keyframes blinking{
+    0%{     color:white;    }
+    50%{     color: white;    }
+    100%{   color: transparent;    }
+
+}

@@ -1,0 +1,10 @@
+.blinkingActive{
+    animation:blinkingTextActive 1s infinite;
+    animation-direction: alternate; 
+}
+@keyframes blinkingTextActive{
+    0%{     color: yellow;    }
+    50%{     color: yellow;    }
+    100%{   color: transparent;    }
+
+}

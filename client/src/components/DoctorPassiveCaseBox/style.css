@@ -1,0 +1,10 @@
+.blinkingPassive{
+    animation:blinkingTextPassive 1s infinite;
+    animation-direction: alternate; 
+}
+@keyframes blinkingTextPassive{
+    0%{     color: green;    }
+    50%{     color: green;    }
+    100%{   color: transparent;    }
+
+}
