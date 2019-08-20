@@ -102,7 +102,7 @@ render() {
                     </div>
                 </div>
                 <div className="row justify-content-center">
-                    <div className="col-6 mb-2 d-flex justify-content-center bg-light pt-3 border-bottom">
+                    <div className="col-6 mb-2 d-flex justify-content-center bg-light pt-3">
                         <p> {this.state.title} </p>
                     </div>   
                 </div>
@@ -129,7 +129,7 @@ render() {
                     </div>
                 </div>
                 <div className="row justify-content-center">
-                    <div className="col-6 mb-2 d-flex justify-content-center bg-light pt-3 border-bottom">
+                    <div className="col-6 mb-2 d-flex justify-content-center bg-light pt-3">
                         <p> {this.state.doctorComment}  </p>
                     </div>   
                 </div>
@@ -142,7 +142,7 @@ render() {
                     </div>
                 </div>
                 <div className="row justify-content-center">
-                    <div className="col-6 mb-2 d-flex justify-content-center bg-light pt-3 border-bottom">
+                    <div className="col-6 mb-2 d-flex justify-content-center bg-light pt-3">
                         <p> {this.state.medicine}  </p>
                     </div>   
                 </div>

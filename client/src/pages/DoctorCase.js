@@ -213,7 +213,7 @@ render() {
                 <div className="row justify-content-center collapse" id="commentCollapse">
                     <div className="col-sm-12 col-md-8 col-lg-6 col-xl-4 d-inline-flex align-self-center bg-light p-3" >
                         <textarea rows="2" cols="5" className="form-control" type="textBox" value={this.state.doctorComment} onChange={this.handleInputChange} name="doctorComment" placeholder="Edit your comment. The patient will see this comment."/>
-                        <button class="btn btn-primary ml-2" type="button" onClick={this.sendMessage}>
+                        <button class="btn btn-primary ml-2" type="button" onClick={this.submitComment}>
                             Submit
                         </button>     
                     </div>

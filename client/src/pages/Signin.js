@@ -7,6 +7,9 @@ class Signin extends Component {
     state = {
         user:[],
         name:"",
+        dobMM:"",
+        dobDD:"",
+        dobYYYY:"",
         phone:"",
         email : "",
         gender:"",
@@ -41,10 +44,13 @@ submitSignin = event => {
     event.preventDefault();
     //console.log("Phone number is : " + this.validatePhone(this.state.phone))
     //console.log("Email adress is : " + this.validateEmail(this.state.email))
-   if(this.validatePhone(this.state.phone) && this.validateEmail(this.state.email) && this.state.name && this.state.gender && this.state.password){
+    
+   if(this.validatePhone(this.state.phone) && this.validateEmail(this.state.email) && this.state.name && this.state.gender && this.state.password && this.state.dobMM && this.state.dobDD && this.state.dobYYYY){
+      var dob=this.state.dobMM + "/" + this.state.dobDD + "/" + this.state.dobYYYY;
     var newUser= {
         name : this.state.name,
         phone : this.state.phone,
+        dob: dob,
         email: this.state.email,
         gender: this.state.gender,
         password: this.state.password
@@ -80,6 +86,7 @@ render() {
                     <h3> There is something wrong! </h3>
                 </div>
             </div>
+
             <div className="row">
                 <div className="col d-flex justify-content-center bg-light pt-3">
                     <h3> Name: </h3>
@@ -129,6 +136,23 @@ render() {
                         <label >Female</label>
                     </div>
                 </div>
+            </div>
+
+            <div className="row">
+                <div className="col d-flex justify-content-center bg-light pt-3">
+                    <h3> Date Of Birth: </h3>
+                </div>
+            </div>
+            <div className="row justify-content-center">
+                <div className="col-sm-4 col-md-3 col-lg-3 col-xl-2 d-inline-flex align-self-center bg-light p-3" >
+                    <input className="form-control" type="number" min="1" max="12" value={this.state.dobMM} onChange={this.handleInputChange} name="dobMM" placeholder="Mount"/>
+                </div>
+                <div className="col-sm-4 col-md-3 col-lg-3 col-xl-2 d-inline-flex align-self-center bg-light p-3" >
+                    <input className="form-control" type="number" min="1" max="30" value={this.state.dobDD} onChange={this.handleInputChange} name="dobDD" placeholder="Day"/>
+                </div>
+                <div className="col-sm-4 col-md-3 col-lg-3 col-xl-2 d-inline-flex align-self-center bg-light p-3" >
+                    <input className="form-control" type="number" min="1900" max="2019" value={this.state.dobYYYY} onChange={this.handleInputChange} name="dobYYYY" placeholder="Year"/>
+                </div>     
             </div>
 
             <div className="row">

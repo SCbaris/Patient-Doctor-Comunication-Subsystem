@@ -8,14 +8,14 @@ const jwt = require("jsonwebtoken");
 module.exports = {
 
     createCaseToUser: function(req,res) {
-        var {id ,dob , doa , reasonOfAppoitment} = req.body;
+        var {id , doa , reasonOfAppoitment} = req.body;
 
-        if(!id ||!dob || !doa || !reasonOfAppoitment) {
-            return res.status(400).json({msg : "Please Enter All Requried Fields"});
+        if(!id || !doa || !reasonOfAppoitment) {
+            return res.status(400).json({msg : "Please Enter All Requried Fields",
+                                        error :true});
         }
 
         const newCase= new Case({ 
-            dob, 
             doa,
             reasonOfAppoitment,
         })
@@ -26,14 +26,13 @@ module.exports = {
                 //console.log("Created Case : ")
                 //console.log(dbCase)
                 return db.User.findOneAndUpdate({ _id: id }, { $push: { case: dbCase._id } })
-                        .then(function (dbUser) {
-                            //console.log("user with case : ")
-                            //console.log(dbUser)
-                            //console.log('successfully push case to user')
+                        .then(dbCase => {return res.json({error:false})})
+                        .catch(function (err) {
+                            console.log(err);
+                            return res.status(400).json({msg :"Case Can not created",
+                                                        error : true});
                         })
-            }).catch(function (err) {
-                console.log(err);
-            });
+            })
     },
     
     findCaseByIdFromUser: function(req,res) {
@@ -242,6 +241,49 @@ module.exports = {
                 console.log(err);
             });
     },
+    changeSeen : function (req,res) {
+        var {userId, spec} = req.body;
+        var caseId = req.params.id;
+        
+        db.Case.findOne({ _id: caseId })
+            .then(dbCase =>{
+                if(!dbCase) return res.status(400). json({msg: "There is no case to search",
+                                                        error : true})
+                //console.log(dbCase)
+                /*var newCase = new Case ({
+
+                })*/
+
+                var messages=[];
+                if(spec==="patient"){
+                    //console.log("Doctor Messages : ")
+                    //console.log(messages)
+                    //console.log("Doctor Message 0 index seen : ")
+                    //console.log(messages[0].seen)
+                    dbCase.doctorMsg.map(mes => {
+                        if(mes.seen===false) mes.seen=true;
+                    })
+                    //console.log(messages)
+                    dbCase
+                        .save()
+                        .then(cas=> res.json({msg:"Success"}))
+
+
+
+                }else if(spec==="doctor"){
+                    console.log("Patient Messages :")
+                    console.log(messages)
+                    dbCase.patientMsg.map(mes => {
+                        if(mes.seen===false) mes.seen=true;
+                    })
+                    dbCase
+                        .save()
+                        .then(cas=> res.json({msg:"Success"}))
+                }
+
+
+            })
+    }
 
 
 };

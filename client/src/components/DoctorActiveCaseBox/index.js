@@ -46,7 +46,7 @@ function DoctorActiveCaseBox(props) {
                 Open
           </button>
           <button key={props.id} type="button" onClick={() => props.changeActivity(props.id, props.caseAct)} className={activitySectionClassName}>
-                Make Active
+                Make Passive
           </button>
           <div className={seenSectionClassName}>
             <span className={seenSectionPClassName}>{seenSectionText} </span>

@@ -5,9 +5,6 @@ import { Redirect } from 'react-router-dom'
 
 class PatientAppointment extends Component {
     state = {
-        dobMM:"",
-        dobDD:"",
-        dobYYYY:"",
         aDateMM:"",
         aDateDD:"",
         aDateYYYY:"",
@@ -16,29 +13,18 @@ class PatientAppointment extends Component {
         todaysYear:"",
         reasonOfAppoitment:"",
         sendingTo:"",
+        error:false,
     };
-
-
-/*componentDidMount() {
-    var d = new Date();
-    var todaysMonth = d.getMonth(); // this one give us to month
-    var todaysDay = d.getDate(); // this one give us day
-    if(this.state.aDateMM>=todaysMonth) todaysDay = 1;
-    var todaysYear = d.getFullYear(); // this one give us year
-    this.setState({
-        todaysDay: todaysDay,
-        todaysMonth: todaysMonth,
-        todaysYear: todaysYear
-      });
-
-};*/
 
 handleInputChange = event => {
     event.preventDefault();
     var d = new Date();
     var todaysDay ;
     var todaysMonth = d.getMonth(); // this one give us to month
-    if(this.state.aDateMM>=todaysMonth+1) todaysDay = 1;
+    //console.log("Todays Month : " + todaysMonth)
+    //console.log("State Month : " + this.state.aDateMM)
+
+    if(this.state.aDateMM>=todaysMonth+2) todaysDay = 1;
     else todaysDay = d.getDate(); // this one give us day
     var todaysYear = d.getFullYear(); // this one give us year
     const { name, value } = event.target;
@@ -57,49 +43,38 @@ logout = () => {
 
 submitCase = event => {
     event.preventDefault();
-    const token =sessionStorage.getItem('token')
-    const id =sessionStorage.getItem('id')
-    var dob=this.state.dobMM + "/" + this.state.dobMM + "/" + this.state.dobYYYY;
-    var doa=this.state.aDateMM + "/" + this.state.aDateDD + "/" + this.state.aDateYYYY;
-    var newCase= {
-        id,
-        dob,
-        doa,
-        reasonOfAppoitment: this.state.reasonOfAppoitment,
-    }
-    API.createCaseToUser(newCase)
-    .then(this.setState({ sendingTo: "patient" }))
-    .then(res=>{
-        //console.log(res.data);
-        //console.log(sessionStorage)
-    })
-    .catch(err => {
-        console.log(err)
-    })
-    
+    if(this.state.aDateMM && this.state.aDateDD && this.state.aDateYYYY && this.state.reasonOfAppoitment && 
+        (parseInt(this.state.aDateMM)<=12)&&(parseInt(this.state.aDateDD)<=31)&&(parseInt(this.state.aDateYYYY)<=2022)){
+        console.log("fist one passed")
+        const id =sessionStorage.getItem('id')
+        var doa=this.state.aDateMM + "/" + this.state.aDateDD + "/" + this.state.aDateYYYY;
+        var newCase= {
+            id,
+            doa,
+            reasonOfAppoitment: this.state.reasonOfAppoitment,
+        }
+        API.createCaseToUser(newCase)
+            .then(()=>this.setState({sendingTo:"patient"}))
+            .catch(err => {
+                this.setState({ error: true }) 
+                console.log(err) })
+    }else this.setState({error:true})
+            
 }
-
 render() {
+    var errBox="col d-none justify-content-center bg-danger text-white pt-3";
     if (this.state.sendingTo==="patient"){ return <Redirect to="/patient" />}
+    if (this.state.error === true) errBox="col d-flex justify-content-center bg-danger text-white pt-3";
     return (
         <div className="bg-light">
             <NavbarPatient logout={this.logout}/>
+            
             <div className="row">
-                <div className="col d-flex justify-content-center bg-light pt-3">
-                    <h3> Date Of Birth: </h3>
+                <div className={errBox}>
+                    <h3> There is something wrong!</h3>
                 </div>
             </div>
-            <div className="row justify-content-center">
-                <div className="col-sm-4 col-md-3 col-lg-3 col-xl-2 d-inline-flex align-self-center bg-light p-3" >
-                    <input className="form-control" type="number" min="1" max="12" value={this.state.dobMM} onChange={this.handleInputChange} name="dobMM" placeholder="Mount"/>
-                </div>
-                <div className="col-sm-4 col-md-3 col-lg-3 col-xl-2 d-inline-flex align-self-center bg-light p-3" >
-                    <input className="form-control" type="number" min="1" max="30" value={this.state.dobDD} onChange={this.handleInputChange} name="dobDD" placeholder="Day"/>
-                </div>
-                <div className="col-sm-4 col-md-3 col-lg-3 col-xl-2 d-inline-flex align-self-center bg-light p-3" >
-                    <input className="form-control" type="number" min="1900" max="2019" value={this.state.dobYYYY} onChange={this.handleInputChange} name="dobYYYY" placeholder="Year"/>
-                </div>     
-            </div>
+
             <div className="row">
                 <div className="col d-flex justify-content-center bg-light">
                     <h3> Requested Appointment Date: </h3>

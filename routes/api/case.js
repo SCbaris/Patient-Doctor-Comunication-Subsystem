@@ -5,6 +5,13 @@ const auth = require("../../middleware/auth")
 
 router.route("/") // api/case/
     .post(caseController.createCaseToUser)
+
+router.route("/seen/:id") // api/case/seen/:id
+                          // this part change all seen value of messages to true.
+    .post(auth, caseController.changeSeen)
+
+router.route("/delete/:id") // api/case/delete/:id
+    .get(auth, caseController.deleteCaseFromUser)
     
 router.route("/user/:id")// api/case/user/:id
                     // this part help us to get case from user id. 

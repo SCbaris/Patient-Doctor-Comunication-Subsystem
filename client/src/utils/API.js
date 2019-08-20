@@ -175,6 +175,22 @@ export default {
         'x-auth-token': token,}
     })
   },
+  changeAllUnseenToSeen:(caseId,userId,spec,token) => { // This function will called on doctor pace.
+                                                   // Whenever Doctor or Patient open case page (spesific case), all unseen turn to seen
+                                                   // This function help the doctor and patient to see unseen messages.
+                                                   // (NOTE: if the case has any unseen messages the indicator blinking.)
+    return axios({
+      method: 'post', 
+      data: { userId: userId,
+              spec:spec }, // spec can be doctor or patient
+                           // this one come from session storage.
+                           // req.body.spec.
+      url: "api/case/seen/" + caseId ,
+      headers: {'Content-Type': 'application/json',
+        'x-auth-token': token,}
+    })
+
+  }
 };
 
 

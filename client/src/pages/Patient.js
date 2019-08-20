@@ -77,17 +77,15 @@ isThereUnseenDoctorMsg = (doctorMsg) => {
 };
 
 openCase = (caseId) => {
+
     sessionStorage['caseId'] = caseId;
+    const patientId =sessionStorage.getItem('id');
+    const token =sessionStorage.getItem('token');
+    const spec =sessionStorage.getItem('spec');
+    API.changeAllUnseenToSeen(caseId , patientId ,spec, token)  
+
     this.setState({ sendingTo: "patientCase" })
 }
-
-/*handleInputChange = event => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    this.setState({
-      
-    });
-};*/
 
 render() {
     if (this.state.sendingTo==="main"){ return <Redirect to="/" />}
@@ -116,7 +114,7 @@ render() {
             </div>
             <div className="caseGeneralBoxActive d-block align-items-center justify-content-center p-2 m-3 bg-light">
                 <div className="col-md-12 d-flex align-items-center justify-content-center p-3 mb-2 bg-success text-white">
-                    <h4>Active Cases</h4>
+                    <h4>Your Approved Appointments</h4>
                 </div>
                 {this.state.approvedCases.map( cas => (
                 <PatientApprovedCaseBox

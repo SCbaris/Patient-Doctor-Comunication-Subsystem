@@ -5,6 +5,7 @@ const userSchema = new Schema({
     name: { type: String, required: true },
     phone: { type: String, required: true ,unique: true},
     email: { type: String, required: true ,unique: true},
+    dob:{ type: String, required: true }, // Date of Birth
     password: { type: String, required: true },
     gender: { type: String, required: true },
     case: [{

@@ -7,8 +7,8 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
     createUser: function(req,res) { // this part for Creating new user. New user gonna be directly patinent
-      var {name , email, password ,gender , phone} = req.body; // Taking all data from form.
-      if(!name || !email || !password || !gender || !phone) { // Required parts check.
+      var {name , email, password ,gender , phone, dob} = req.body; // Taking all data from form.
+      if(!name || !email || !password || !gender || !phone || !dob) { // Required parts check.
         return res.status(400).json({msg : "Please Enter All Requried Fields"});
       }
 
@@ -24,7 +24,8 @@ module.exports = {
                                          error : true});}
         })
         const newUser= new User({ // Else there aren't any user with this email,
-          name, 
+          name,
+          dob,
           email,
           password,
           gender,
@@ -45,7 +46,8 @@ module.exports = {
                   name: user.name,
                   email: user.email,
                   gender: user.gender,
-                  phone: user.phone
+                  phone: user.phone,
+                  dob: user.dob,
                    // They are datas that we want to encrypt and bring back. 
                   },
                   config.get("jwtSecret"), // this is our secret. 
@@ -54,7 +56,7 @@ module.exports = {
                                            // Every doctor use their special secret to reach the cases.
                   { expiresIn : 1800}, 
                   (err, token)=> {
-                    if(err) throw err;
+                    if(err) throw sessionStorage.clear();
                     //console.log("user token : ");
                     //console.log(token);
                     res.json({

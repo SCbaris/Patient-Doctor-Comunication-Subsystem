@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const caseSchema = new Schema({
-    dob:{ type: String, required: true }, // Date of Birth (From Patient Appointment Page) (it Will change to sign in page)
     doa:{ type: String, required: true }, // Date of Appointment (From Sign in)
     title:{ type: String}, // This title will shown Case boxes and Case pages.
     doctorHideComment: { type: String}, // This comment is hidden. Only doctor will see this. 

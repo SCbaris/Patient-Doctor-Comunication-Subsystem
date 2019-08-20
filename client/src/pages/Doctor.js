@@ -108,23 +108,19 @@ class Doctor extends Component {
     };
 
     openCase = (caseId) => {
+
         sessionStorage['caseId'] = caseId;
+        const doctorId =sessionStorage.getItem('id');
+        const token =sessionStorage.getItem('token');
+        const spec =sessionStorage.getItem('spec');
+        API.changeAllUnseenToSeen(caseId , doctorId ,spec, token)  
+
         this.setState({ sendingTo: "doctorCase" })
     }
 
-
-
-/*handleInputChange = event => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    this.setState({
-      
-    });
-};*/
-
-logout = () => {
+    logout = () => {
     sessionStorage.clear();
-}
+    }
 
 render() {
     if (this.state.sendingTo==="main"){ return <Redirect to="/" />}

@@ -28,7 +28,7 @@ function PatientApprovedCaseBox(props) {
 
         titleSectionClassName="col-md-8 d-flex border-right align-items-center justify-content-center p-2";
         doaSectionClassName="col-md-2 border-right d-flex align-items-center justify-content-center";
-        openSectionClassName="col-md-2 border-right btn btn-success align-items-center justify-content-center";
+        openSectionClassName="col-md-2 btn btn-success align-items-center justify-content-center";
         seenSectionClassName="d-none";
     }
 
