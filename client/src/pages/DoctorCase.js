@@ -40,6 +40,7 @@ componentDidMount() {
     if(!token || !doctorId ) this.setState({ sendingTo: "main" })
 
     API.getUser(doctorId , token)
+        .then(res => {if(!res.data.name || !res.data.email || !res.data.title) return this.setState({ sendingTo: "main" })})
         .catch(err => {
         this.setState({ sendingTo: "main" })
         console.log(err)

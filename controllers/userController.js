@@ -56,7 +56,7 @@ module.exports = {
                                            // Every doctor use their special secret to reach the cases.
                   { expiresIn : 1800}, 
                   (err, token)=> {
-                    if(err) throw sessionStorage.clear();
+                    if(err) throw err;
                     //console.log("user token : ");
                     //console.log(token);
                     res.json({
@@ -121,7 +121,7 @@ module.exports = {
                   config.get("jwtSecret"),
                   { expiresIn : 1800},
                   (err, token)=> {
-                    if(err) throw sessionStorage.clear();
+                    if(err) throw err;
                     res.json({
                       token: token,
                       user: {
@@ -167,7 +167,7 @@ module.exports = {
                     config.get("jwtSecret"),
                     { expiresIn : 1800},
                     (err, token)=> {
-                      if(err) throw sessionStorage.clear();
+                      if(err) throw err;;
                       res.json({
                         token: token,
                         user: {
@@ -198,6 +198,7 @@ module.exports = {
             .then(doctor => {
               res.json(doctor)
             })
+            .catch(err => res.status(422).json(err));
           } else res.json(user)
           
           })

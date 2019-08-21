@@ -111,7 +111,9 @@ module.exports = {
                             //console.log("Doctor with approved case : ")
                             //console.log(dbDoctor)
                             console.log('successfully push approved case to doctor')
-                        })
+                        }).catch(function (err) {
+                            console.log(err);
+                        });
             }).catch(function (err) {
                 console.log(err);
             });
@@ -142,7 +144,7 @@ module.exports = {
     addPatientMsg: function(req,res) {
         var patientMes = req.body.patientMessage;
         var caseId = req.params.id;
-        var d = new Date();
+        //var d = new Date();
         //console.log("Patient send a message : ")
         //console.log(patientMes)
 
@@ -241,6 +243,7 @@ module.exports = {
                 console.log(err);
             });
     },
+
     changeSeen : function (req,res) {
         var {userId, spec} = req.body;
         var caseId = req.params.id;
@@ -267,7 +270,9 @@ module.exports = {
                     dbCase
                         .save()
                         .then(cas=> res.json({msg:"Success"}))
-
+                        .catch(function (err) {
+                            console.log(err);
+                        });
 
 
                 }else if(spec==="doctor"){
@@ -279,6 +284,9 @@ module.exports = {
                     dbCase
                         .save()
                         .then(cas=> res.json({msg:"Success"}))
+                        .catch(function (err) {
+                            console.log(err);
+                        });
                 }
 
 

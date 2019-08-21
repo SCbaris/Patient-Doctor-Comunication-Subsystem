@@ -30,12 +30,14 @@ class Doctor extends Component {
 
         if(!token || !doctorId ) this.setState({ sendingTo: "main" })
         API.getUser(doctorId , token)
-            .then(res => this.setState({
-                name : res.data.name,
-                email :res.data.email,
-                title :res.data.title
+            .then(res => {
+                if(!res.data.name || !res.data.email || !res.data.title) return this.setState({ sendingTo: "main" })
+                this.setState({
+                    name : res.data.name,
+                    email :res.data.email,
+                    title :res.data.title
+                })
             })
-            )
             .catch(err => {
                 this.setState({ sendingTo: "main" })
                 console.log(err)

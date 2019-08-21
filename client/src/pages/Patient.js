@@ -23,13 +23,15 @@ componentDidMount() {
 
         if(!token || !id ) this.setState({ sendingTo: "main" })
         API.getUser(id , token)
-            .then(res => this.setState({
-                name : res.data.name,
-                phone :res.data.phone,
-                email :res.data.email,
-                gender :res.data.gender
+            .then(res =>{ 
+                if(!res.data.name || !res.data.phone || !res.data.email || !res.data.gender) return this.setState({ sendingTo: "main" })
+                this.setState({
+                    name : res.data.name,
+                    phone :res.data.phone,
+                    email :res.data.email,
+                    gender :res.data.gender
+                })
             })
-            )
             .catch(err => {
                 this.setState({ sendingTo: "main" })
                 console.log(err)
