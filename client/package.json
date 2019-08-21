@@ -5,6 +5,8 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.18.0",
+    "config": "^3.2.2",
+    "nodemailer": "^6.3.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^7.1.0",

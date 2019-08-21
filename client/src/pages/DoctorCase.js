@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import MessageBox from "../components/MessageBox";
 
 
+
 class DoctorCase extends Component {
     state = {
         oldTitle:"", // old values came from db. 
@@ -22,13 +23,19 @@ class DoctorCase extends Component {
         doctorMsg:[],
         allMsg:[],
         sendingTo:"",
-        newMessage:""
+        newMessage:"",
+
+        userEmail:"",
     };
 
+
+
 componentDidMount() {
+    
     const token =sessionStorage.getItem('token');
     const doctorId =sessionStorage.getItem('id');
     const caseId =sessionStorage.getItem("caseId");
+    const spec=sessionStorage.getItem("spec");
     
     if(!token || !doctorId ) this.setState({ sendingTo: "main" })
 
@@ -37,6 +44,18 @@ componentDidMount() {
         this.setState({ sendingTo: "main" })
         console.log(err)
         });
+
+    API.findUserByIdFromCase(caseId ,spec,  token)
+        .then(res => {
+            //console.log("findUserByIdFromCase start")
+            //console.log("your user is :")
+            //console.log(res.data);
+            this.setState({
+                userEmail:res.data.email
+             })
+        })
+    
+
     API.findCaseByIdFromCase(caseId,token)
         .then(res=>{
             //console.log(res.data[0])
@@ -89,6 +108,7 @@ submitComment = event => {
     const token =sessionStorage.getItem('token');
     const doctorId =sessionStorage.getItem('id');
     const caseId =sessionStorage.getItem("caseId");
+    
 
     var newComment= {
         title: this.state.title,
@@ -107,21 +127,27 @@ submitComment = event => {
 
 sendMessage = event => {
     event.preventDefault();
+
     const token =sessionStorage.getItem('token');
     const doctorId =sessionStorage.getItem('id');
     const caseId =sessionStorage.getItem("caseId");
+    const spec=sessionStorage.getItem("spec");
 
     API.addDoctorMessage(caseId, this.state.newMessage , token)
-        .then(window.location.reload())
+        .then(()=>{
+            API.sendMail(this.state.newMessage,this.state.userEmail,spec)
+                .catch(err =>console.log(err))
+            window.location.reload()
+        })
         //.then(res=>console.log(res.data))
         .catch(err => console.log(err))
+    
 
 }
 
 
 render() {
     if (this.state.sendingTo==="main"){ return <Redirect to="/" />}
-    
     return (
         <div className="bg-light">
             <NavbarBlueEmpty logout={this.logout}/>

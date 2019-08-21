@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config= require("config");
+const nodemailer=require("nodemailer");
 
 
 mongoose.Promise = global.Promise

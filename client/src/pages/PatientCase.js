@@ -15,13 +15,16 @@ class PatientCase extends Component {
         doctorMsg:[],
         allMsg:[],
         sendingTo:"",
-        newMessage:""
+        newMessage:"",
+
+        userEmail:"",
     };
 
 componentDidMount() {
     const token =sessionStorage.getItem('token');
     const patientId =sessionStorage.getItem('id');
     const caseId =sessionStorage.getItem("caseId");
+    const spec=sessionStorage.getItem("spec");
 
     if(!token || !patientId ) this.setState({ sendingTo: "main" })
 
@@ -30,6 +33,17 @@ componentDidMount() {
             this.setState({ sendingTo: "main" })
             console.log(err)
         });
+
+    
+    API.findUserByIdFromCase(caseId ,spec,  token)
+        .then(res => {
+            //console.log("findUserByIdFromCase start")
+            //console.log("your user is :")
+            //console.log(res.data);
+            this.setState({
+                userEmail:res.data.email
+             })
+        })
 
     API.findCaseByIdFromCase(caseId,token)
         .then(res=>{
@@ -80,9 +94,14 @@ sendMessage = event => {
     const token =sessionStorage.getItem('token');
     const patientId =sessionStorage.getItem('id');
     const caseId =sessionStorage.getItem("caseId");
+    const spec=sessionStorage.getItem("spec");
 
     API.addPatientMessage(caseId, this.state.newMessage , token)
-        .then(window.location.reload())
+        .then(()=>{
+            API.sendMail(this.state.newMessage,this.state.userEmail,spec)
+                .catch(err =>console.log(err))
+            window.location.reload()
+        })
         //.then(res=>console.log(res.data))
         .catch(err => console.log(err))
 

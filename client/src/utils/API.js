@@ -42,6 +42,16 @@ export default {
                 'x-auth-token': token,}
       });
   },
+  findUserByIdFromCase: (caseId ,spec,  token) =>{
+    console.log("Getting User from Id of the case Start")
+    return axios({
+      method: 'post', 
+      data: { spec:spec }, 
+      url: "api/users/" + caseId  ,
+      headers: {'Content-Type': 'application/json',
+        'x-auth-token': token,}
+    })
+  },
   removeCaseById: (id, token) => { // This function is for patient.
                                    // If the patient want to delete an appointment request,
                                    // They can click "Cancel appointment" or "Cross(X)" and remove their case.
@@ -190,6 +200,15 @@ export default {
         'x-auth-token': token,}
     })
 
+  },
+  sendMail:(message,email,spec) => {
+    return axios({
+      method: 'post', 
+      data: { message: message,
+              email:email,
+              spec:spec }, 
+      url: "api/mail"
+      })
   }
 };
 

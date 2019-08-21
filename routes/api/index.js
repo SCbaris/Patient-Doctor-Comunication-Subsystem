@@ -3,6 +3,7 @@ const usersRoutes = require("./users");
 const authRoutes = require("./auth")
 const caseRoutes = require("./case")
 const doctorRoutes = require("./doctor")
+const mailRouters = require("./mail")
 
 router.use("/users", usersRoutes);// /api/users
                                   // This part for creating new user. 
@@ -29,6 +30,8 @@ router.use("/case", caseRoutes); // /api/case
                                  // Delete and See need auth path.
 
 router.use("/doctor" , doctorRoutes);
+
+router.use("/mail" , mailRouters);
 
 
 

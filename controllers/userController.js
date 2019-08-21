@@ -82,7 +82,6 @@ module.exports = {
         })   
     }, 
 
-
     logInUser: function(req, res) { // this part for Log in user. 
                                     // this part will help 
       const {email, password} = req.body;
@@ -185,8 +184,7 @@ module.exports = {
           }
 
         
-      },
-
+    },
     
     findUserById: function(req, res) {
       db.User
@@ -204,6 +202,59 @@ module.exports = {
           
           })
         .catch(err => res.status(422).json(err));
+    },
+
+    getUserFromCaseId: function(req, res) {
+      var spec = req.body.spec;
+      //console.log(req.body)
+      var caseId = req.params.id;
+      //console.log("inside of getUserFromCaseId")
+      //console.log("spec is : " + spec)
+      //console.log("caseId is : " + caseId)
+      if(spec==="doctor"){
+        console.log("inside of doctor if")
+        db.User.find()
+          .then(users => {
+            users.map(user=>{
+              newUser=user.case.filter(cas=>{
+                //console.log("your cas is : " +cas)
+                //console.log("your case id is : " + caseId)
+                //console.log(cas===caseId)
+                //console.log(cas==caseId)
+                if(cas==caseId) {
+                  console.log("User found")
+                  //console.log(user)
+                  
+                  res.json(user)};
+                
+              })
+            })
+            
+          }).catch(err => res.status(422).json(err));
+        }
+      if(spec==="patient"){
+        db.Doctor.find()        
+        .then(users => {
+          users.map(user=>{
+            newUser=user.case.filter(cas=>{
+              //console.log("your cas is : " +cas)
+              //console.log("your case id is : " + caseId)
+              //console.log(cas===caseId)
+              //console.log(cas==caseId)
+              if(cas==caseId) {
+                console.log("User found")
+                console.log(user)
+                
+                res.json(user)};
+              
+            })
+          })
+          
+        }).catch(err => res.status(422).json(err));
+      }
+
+
+
     },
 
 
