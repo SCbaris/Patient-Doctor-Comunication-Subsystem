@@ -23,7 +23,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 
-const db = config.get('mongoURI');
+//const db = config.get('mongoURI');
 
 // Connect to Mongo
 /*mongoose
@@ -34,8 +34,11 @@ const db = config.get('mongoURI');
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));*/
 
-
-  mongoose.connect(process.env.MONGODB_URI || "mongodb://scbaris:Cancan123!.@ds211718.mlab.com:11718/heroku_bf2t53h5");
+  mongoose.connect(process.env.MONGODB_URI || "mongodb://scbaris:cancan123@ds211718.mlab.com:11718/heroku_bf2t53h5" , 
+  { 
+    useNewUrlParser: true,
+    useCreateIndex: true
+  });
 
 
 //mongoose.connect(process.env.MONGODB_URI || "mongodb://scbaris:cancan123!.@ds247637.mlab.com:47637/heroku_g8vx3r7k");
