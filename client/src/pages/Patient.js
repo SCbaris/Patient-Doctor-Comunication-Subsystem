@@ -7,6 +7,7 @@ import PatientAppointmentWaitBox from "../components/PatientAppointmentWaitBox"
 import PatientApprovedCaseBox from "../components/PatientApprovedCaseBox"
 import "./style.css";
 
+
 class Patient extends Component {
     state = {
         name:"",
@@ -21,7 +22,6 @@ class Patient extends Component {
 componentDidMount() {
         const token =sessionStorage.getItem('token')
         const id =sessionStorage.getItem('id')
-
         if(!token || !id ) this.setState({ sendingTo: "main" })
         API.getUser(id , token)
             .then(res =>{ 

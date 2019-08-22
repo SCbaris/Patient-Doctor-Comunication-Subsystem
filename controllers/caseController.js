@@ -1,8 +1,9 @@
 const db = require("../models");
 const Case = require("../models/case");
 const bcrypt = require("bcryptjs")
-const config= require("config");
+//const config= require("config");
 const jwt = require("jsonwebtoken");
+require('dotenv').config()
 
 
 module.exports = {

@@ -2,8 +2,9 @@ const db = require("../models");
 const User = require("../models/user");
 const Doctor = require("../models/doctor");
 const bcrypt = require("bcryptjs")
-const config= require("config");
+//const config= require("config");
 const jwt = require("jsonwebtoken");
+require('dotenv').config()
 
 module.exports = {
     createUser: function(req,res) { // this part for Creating new user. New user gonna be directly patinent
@@ -50,7 +51,7 @@ module.exports = {
                   dob: user.dob,
                    // They are datas that we want to encrypt and bring back. 
                   },
-                  config.get("jwtSecret"), // this is our secret. 
+                  process.env.jwtSecret, // this is our secret. 
                                            // this project we use one jwtSecret. 
                                            // in the future every doctor has their special dogle.
                                            // Every doctor use their special secret to reach the cases.
@@ -85,7 +86,6 @@ module.exports = {
     logInUser: function(req, res) { // this part for Log in user. 
                                     // this part will help 
       const {email, password} = req.body;
-
       var userForPass= {
           id:"",
           name:"",
@@ -118,7 +118,7 @@ module.exports = {
                   name:userForPass.name,
                   email:userForPass.email  
                   },
-                  config.get("jwtSecret"),
+                  process.env.jwtSecret,
                   { expiresIn : 1800},
                   (err, token)=> {
                     if(err) throw err;
@@ -164,7 +164,7 @@ module.exports = {
                     name:userForPass.name,
                     email:userForPass.email  
                     },
-                    config.get("jwtSecret"),
+                    jwtSecret,
                     { expiresIn : 1800},
                     (err, token)=> {
                       if(err) throw err;;

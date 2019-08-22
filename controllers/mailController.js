@@ -1,5 +1,6 @@
-const config= require("config");
+//const config= require("config");
 const nodemailer=require("nodemailer");
+require('dotenv').config()
 
 
 module.exports = {
@@ -19,8 +20,8 @@ module.exports = {
         let transporter=nodemailer.createTransport({
         service: "gmail",
         auth : {
-            user: config.get("emailUser"),
-            pass: config.get("emailPass"),
+            user: process.env.emailUser,
+            pass: process.env.emailPass,
         }
         });
 

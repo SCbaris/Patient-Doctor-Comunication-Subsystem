@@ -3,6 +3,7 @@ const Doctor = require("../models/doctor");
 const bcrypt = require("bcryptjs")
 const config= require("config");
 const jwt = require("jsonwebtoken");
+require('dotenv').config()
 
 module.exports = {
     createDoctor: function(req,res) { // this part for Creating new Doctor.
@@ -42,7 +43,7 @@ module.exports = {
                   title: doctor.title
                    // They are datas that we want to encrypt and bring back. 
                   },
-                  config.get("jwtSecret"), // this is our secret. 
+                  process.env.jwtSecret, // this is our secret. 
                                            // this project we use one jwtSecret. 
                                            // in the future every doctor has their special dogle.
                                            // Every doctor use their special secret to reach the cases.

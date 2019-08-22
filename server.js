@@ -41,8 +41,6 @@ app.use(routes);
   });
 
 
-//mongoose.connect(process.env.MONGODB_URI || "mongodb://scbaris:cancan123!.@ds247637.mlab.com:47637/heroku_g8vx3r7k");
-
 /*mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hospital" ,{ 
   useNewUrlParser: true,
   useCreateIndex: true});*/
