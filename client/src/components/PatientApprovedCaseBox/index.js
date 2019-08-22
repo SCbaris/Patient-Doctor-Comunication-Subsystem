@@ -7,7 +7,6 @@ function PatientApprovedCaseBox(props) {
     var titleSectionClassName;
     var doaSectionClassName;
     var openSectionClassName;
-    var activitySectionClassName;
     var seenSectionPClassName;
     var seenSectionClassName;
     var seenSectionText;

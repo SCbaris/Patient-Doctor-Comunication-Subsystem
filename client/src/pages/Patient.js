@@ -5,6 +5,7 @@ import { JumbotronPatient } from "../components/Jumbotron";
 import { Redirect } from 'react-router-dom'
 import PatientAppointmentWaitBox from "../components/PatientAppointmentWaitBox"
 import PatientApprovedCaseBox from "../components/PatientApprovedCaseBox"
+import "./style.css";
 
 class Patient extends Component {
     state = {
@@ -93,7 +94,7 @@ render() {
     if (this.state.sendingTo==="main"){ return <Redirect to="/" />}
     if (this.state.sendingTo==="patientCase"){ return <Redirect to="/patientcase" />}
     return (
-        <div>
+        <div className="generalBOXpink">
             <NavbarPatient logout={this.logout}/>
             <JumbotronPatient
                 gender={this.state.gender}

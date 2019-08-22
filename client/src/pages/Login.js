@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {NavbarPinkEmpty} from "../components/Navbar";
 import { Redirect } from 'react-router-dom'
 import API from "../utils/API";
+import "./style.css";
 
 class Login extends Component {
     state = {
@@ -53,7 +54,7 @@ render() {
     if (this.state.sendingTo==="patient"){ return <Redirect to="/patient" />}
     else if (this.state.sendingTo==="doctor"){ return <Redirect to="/doctor" />}
     return (
-        <div className="bg-light">
+        <div className="generalBOXpink">
             <NavbarPinkEmpty/>
             <div className="row">
                 <div className="col d-flex justify-content-center bg-light pt-3">

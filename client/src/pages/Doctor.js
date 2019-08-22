@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 import DoctorUnApprovedCaseBox from "../components/DoctorUnApprovedCaseBox"
 import DoctorActiveCaseBox from "../components/DoctorActiveCaseBox"
 import DoctorPassiveCaseBox from "../components/DoctorPassiveCaseBox"
+import "./style.css";
 
 class Doctor extends Component {
     state = {
@@ -128,7 +129,7 @@ render() {
     if (this.state.sendingTo==="main"){ return <Redirect to="/" />}
     if (this.state.sendingTo==="doctorCase"){ return <Redirect to="/doctorcase" />}
     return (
-        <div>
+        <div className="generalBOXblue">
             <NavbarBlueEmpty logout={this.logout}/>
             <JumbotronDoctor
                     titleOfDoctor={this.state.title}

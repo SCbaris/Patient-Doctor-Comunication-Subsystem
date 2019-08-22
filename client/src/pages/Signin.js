@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {NavbarPinkEmpty} from "../components/Navbar";
 import { Redirect } from 'react-router-dom'
 import API from "../utils/API";
+import "./style.css";
 
 class Signin extends Component {
     state = {
@@ -38,7 +39,6 @@ validatePhone=(phone)=> {
     // if phonenumber is avaible to use, they send true.
     //nnn-nnn-nnnn is ok, nnnnnnnnnn is ok, nnn-nnn-nn-nn is NOT ok.
 }
-
 
 submitSignin = event => {
     event.preventDefault();
@@ -79,7 +79,7 @@ render() {
     if (this.state.error === true) errBox="col d-flex justify-content-center bg-danger text-white pt-3";
     
     return (
-        <div className="bg-light">
+        <div className="generalBOXpink">
             <NavbarPinkEmpty/>
             <div className="row">
                 <div className={errBox}>

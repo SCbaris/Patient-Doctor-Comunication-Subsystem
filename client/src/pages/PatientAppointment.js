@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {NavbarPatient} from "../components/Navbar";
 import API from "../utils/API";
 import { Redirect } from 'react-router-dom'
+import "./style.css";
 
 class PatientAppointment extends Component {
     state = {
@@ -66,7 +67,7 @@ render() {
     if (this.state.sendingTo==="patient"){ return <Redirect to="/patient" />}
     if (this.state.error === true) errBox="col d-flex justify-content-center bg-danger text-white pt-3";
     return (
-        <div className="bg-light">
+        <div className="generalBOXpink">
             <NavbarPatient logout={this.logout}/>
             
             <div className="row">

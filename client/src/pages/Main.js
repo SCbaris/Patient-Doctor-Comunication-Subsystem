@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {NavbarMain} from "../components/Navbar";
 import { Redirect } from 'react-router-dom'
 import API from "../utils/API";
+import "./style.css";
 
 class Main extends Component {
     state = {
@@ -29,8 +30,9 @@ render() {
     if (spec==="patient"){ return <Redirect to="/patient" />}
     else if (spec==="doctor"){ return <Redirect to="/doctor" />}
     return (
-        <NavbarMain/>
-        
+        <div className="generalBOXpink">
+            <NavbarMain/>
+        </div>
     );
 }
 };

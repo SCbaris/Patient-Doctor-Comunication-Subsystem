@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {NavbarPinkEmptyPatient} from "../components/Navbar";
-import API from "../utils/API";
-import { Redirect } from 'react-router-dom'
+//import API from "../utils/API";
+//import { Redirect } from 'react-router-dom'
+import "./style.css";
 
 class PatientLocation extends Component {
     state = {
@@ -27,7 +28,9 @@ logout = () => {
 
 render() {
     return (
-        <NavbarPinkEmptyPatient logout={this.logout} />
+        <div className="generalBOXpink">
+            <NavbarPinkEmptyPatient logout={this.logout} />
+        </div>
     );
 }
 };

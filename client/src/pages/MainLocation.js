@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {NavbarMain} from "../components/Navbar";
-import API from "../utils/API";
-import { Redirect } from 'react-router-dom'
+//import API from "../utils/API";
+//import { Redirect } from 'react-router-dom'
+import "./style.css";
 
 class MainLocation extends Component {
     state = {
@@ -23,7 +24,9 @@ class MainLocation extends Component {
 
 render() {
     return (
-        <NavbarMain/>
+        <div className="generalBOXpink">
+            <NavbarMain/>
+        </div>
     );
 }
 };

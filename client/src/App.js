@@ -11,13 +11,12 @@ import DoctorCase from "./pages/DoctorCase"
 import MainLocation from "./pages/MainLocation"
 import PatientLocation from "./pages/PatientLocation"
 
-
 function App() {
   return (
       <Router>
-        <div>
+        <div className="mainBOX" >
           <Switch>
-            <Route exact path="/" component={Main} /> {/*This is fist page.*/}
+            <Route exact path="/" component={Main}/> {/*This is fist page.*/}
             <Route exact path="/login" component={Login} /> {/*If client click "Log in", this page will open*/}
             <Route exact path="/signin" component={Signin} /> {/*If client click "New Patient", this page will open*/}
             <Route exact path="/patient" component={Patient} /> {/*If client log in as patient Patient page will open*/}

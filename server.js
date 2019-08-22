@@ -22,9 +22,27 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hospital" ,{ 
+
+const db = config.get('mongoURI');
+
+// Connect to Mongo
+mongoose
+  .connect(db, { 
+    useNewUrlParser: true,
+    useCreateIndex: true
+  }) // Adding new mongo url parser
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
+
+
+
+
+
+//mongoose.connect(process.env.MONGODB_URI || "mongodb://scbaris:cancan123!.@ds247637.mlab.com:47637/heroku_g8vx3r7k");
+
+/*mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hospital" ,{ 
   useNewUrlParser: true,
-  useCreateIndex: true});
+  useCreateIndex: true});*/
 /*mongoose.connect(db ,{ 
   useNewUrlParser: true,
   useCreateIndex: true});*/

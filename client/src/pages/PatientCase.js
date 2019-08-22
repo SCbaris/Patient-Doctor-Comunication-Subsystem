@@ -3,6 +3,7 @@ import {NavbarPinkEmptyPatient} from "../components/Navbar";
 import API from "../utils/API";
 import { Redirect } from 'react-router-dom'
 import MessageBox from "../components/MessageBox";
+import "./style.css";
 
 class PatientCase extends Component {
     state = {
@@ -112,7 +113,7 @@ render() {
     if (this.state.sendingTo==="main"){ return <Redirect to="/" />}
     
     return (
-        <div className="bg-light">
+        <div className="generalBOXpink">
             <NavbarPinkEmptyPatient logout={this.logout}/>
 
             <div className="titleGeneralBox bg-light border-bottom">
