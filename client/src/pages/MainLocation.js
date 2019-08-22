@@ -24,7 +24,7 @@ class MainLocation extends Component {
 
 render() {
     return (
-        <div className="generalBOXpink">
+        <div className="generalBOXpink bg-light">
             <NavbarMain/>
         </div>
     );

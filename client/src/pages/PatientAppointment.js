@@ -67,7 +67,7 @@ render() {
     if (this.state.sendingTo==="patient"){ return <Redirect to="/patient" />}
     if (this.state.error === true) errBox="col d-flex justify-content-center bg-danger text-white pt-3";
     return (
-        <div className="generalBOXpink">
+        <div className="generalBOXpink bg-light">
             <NavbarPatient logout={this.logout}/>
             
             <div className="row">

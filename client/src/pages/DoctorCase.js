@@ -151,7 +151,7 @@ sendMessage = event => {
 render() {
     if (this.state.sendingTo==="main"){ return <Redirect to="/" />}
     return (
-        <div className="generalBOXblue">
+        <div className="generalBOXblue bg-light">
             <NavbarBlueEmpty logout={this.logout}/>
 
             <div className="titleGeneralBox bg-light border-bottom">

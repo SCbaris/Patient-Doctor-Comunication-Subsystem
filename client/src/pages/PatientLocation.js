@@ -28,7 +28,7 @@ logout = () => {
 
 render() {
     return (
-        <div className="generalBOXpink">
+        <div className="generalBOXpink bg-light">
             <NavbarPinkEmptyPatient logout={this.logout} />
         </div>
     );

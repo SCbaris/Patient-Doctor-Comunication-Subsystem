@@ -129,7 +129,7 @@ render() {
     if (this.state.sendingTo==="main"){ return <Redirect to="/" />}
     if (this.state.sendingTo==="doctorCase"){ return <Redirect to="/doctorcase" />}
     return (
-        <div className="generalBOXblue">
+        <div className="generalBOXblue bg-light">
             <NavbarBlueEmpty logout={this.logout}/>
             <JumbotronDoctor
                     titleOfDoctor={this.state.title}

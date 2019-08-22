@@ -1,16 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const config= require("config");
-const path = require('path');
-
 
 mongoose.Promise = global.Promise
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
-/*const db = config.get("mongoURI");*/
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -23,30 +18,12 @@ app.use(routes);
 
 // Connect to the Mongo DB
 
-//const db = config.get('mongoURI');
-
-// Connect to Mongo
-/*mongoose
-  .connect(db, { 
-    useNewUrlParser: true,
-    useCreateIndex: true
-  }) // Adding new mongo url parser
-  .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));*/
-
-  mongoose.connect(process.env.MONGODB_URI || "mongodb://scbaris:cancan123@ds211718.mlab.com:11718/heroku_bf2t53h5" , 
+  mongoose.connect(process.env.mongoURI || "mongodb://localhost/hospital" , 
   { 
     useNewUrlParser: true,
     useCreateIndex: true
   });
 
-
-/*mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hospital" ,{ 
-  useNewUrlParser: true,
-  useCreateIndex: true});*/
-/*mongoose.connect(db ,{ 
-  useNewUrlParser: true,
-  useCreateIndex: true});*/
 
 // Start the API server
 app.listen(PORT, function() {

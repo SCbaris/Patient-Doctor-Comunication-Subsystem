@@ -113,7 +113,7 @@ render() {
     if (this.state.sendingTo==="main"){ return <Redirect to="/" />}
     
     return (
-        <div className="generalBOXpink">
+        <div className="generalBOXpink bg-light">
             <NavbarPinkEmptyPatient logout={this.logout}/>
 
             <div className="titleGeneralBox bg-light border-bottom">

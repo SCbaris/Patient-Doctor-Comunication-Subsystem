@@ -54,7 +54,7 @@ render() {
     if (this.state.sendingTo==="patient"){ return <Redirect to="/patient" />}
     else if (this.state.sendingTo==="doctor"){ return <Redirect to="/doctor" />}
     return (
-        <div className="generalBOXpink">
+        <div className="generalBOXpink bg-light">
             <NavbarPinkEmpty/>
             <div className="row">
                 <div className="col d-flex justify-content-center bg-light pt-3">

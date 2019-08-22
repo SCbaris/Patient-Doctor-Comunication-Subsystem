@@ -164,7 +164,7 @@ module.exports = {
                     name:userForPass.name,
                     email:userForPass.email  
                     },
-                    jwtSecret,
+                    process.env.jwtSecret,
                     { expiresIn : 1800},
                     (err, token)=> {
                       if(err) throw err;;

@@ -30,7 +30,7 @@ render() {
     if (spec==="patient"){ return <Redirect to="/patient" />}
     else if (spec==="doctor"){ return <Redirect to="/doctor" />}
     return (
-        <div className="generalBOXpink">
+        <div className="generalBOXpink bg-light">
             <NavbarMain/>
         </div>
     );

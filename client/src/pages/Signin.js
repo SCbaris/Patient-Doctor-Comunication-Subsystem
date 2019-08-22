@@ -79,7 +79,7 @@ render() {
     if (this.state.error === true) errBox="col d-flex justify-content-center bg-danger text-white pt-3";
     
     return (
-        <div className="generalBOXpink">
+        <div className="generalBOXpink bg-light">
             <NavbarPinkEmpty/>
             <div className="row">
                 <div className={errBox}>
