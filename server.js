@@ -17,10 +17,6 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
 }
 // Add routes, both API and view
 app.use(routes);
@@ -30,16 +26,16 @@ app.use(routes);
 const db = config.get('mongoURI');
 
 // Connect to Mongo
-mongoose
+/*mongoose
   .connect(db, { 
     useNewUrlParser: true,
     useCreateIndex: true
   }) // Adding new mongo url parser
   .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+  .catch(err => console.log(err));*/
 
 
-
+  mongoose.connect(process.env.MONGODB_URI || "mongodb://scbaris:Cancan123!.@ds211718.mlab.com:11718/heroku_bf2t53h5");
 
 
 //mongoose.connect(process.env.MONGODB_URI || "mongodb://scbaris:cancan123!.@ds247637.mlab.com:47637/heroku_g8vx3r7k");
