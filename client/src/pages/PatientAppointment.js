@@ -21,13 +21,16 @@ handleInputChange = event => {
     event.preventDefault();
     var d = new Date();
     var todaysDay ;
-    var todaysMonth = d.getMonth(); // this one give us to month
+    var todaysMonth ; // this one give us to month
     //console.log("Todays Month : " + todaysMonth)
     //console.log("State Month : " + this.state.aDateMM)
+    var todaysYear = d.getFullYear(); // this one give us year
 
     if(this.state.aDateMM>=todaysMonth+2) todaysDay = 1;
     else todaysDay = d.getDate(); // this one give us day
-    var todaysYear = d.getFullYear(); // this one give us year
+    if(this.state.aDateYYYY>=todaysYear) todaysMonth =1;
+    else todaysMonth = d.getMonth()
+    
     const { name, value } = event.target;
     this.setState({
         todaysDay: todaysDay,
@@ -46,7 +49,7 @@ submitCase = event => {
     event.preventDefault();
     if(this.state.aDateMM && this.state.aDateDD && this.state.aDateYYYY && this.state.reasonOfAppoitment && 
         (parseInt(this.state.aDateMM)<=12)&&(parseInt(this.state.aDateDD)<=31)&&(parseInt(this.state.aDateYYYY)<=2022)){
-        console.log("fist one passed")
+        //console.log("first one passed")
         const id =sessionStorage.getItem('id')
         var doa=this.state.aDateMM + "/" + this.state.aDateDD + "/" + this.state.aDateYYYY;
         var newCase= {

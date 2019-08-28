@@ -146,7 +146,7 @@ render() {
             <div className="doctorCommentGeneralBox bg-light border-bottom" >
                 <div className="row justify-content-center">
                     <div className="col-6 d-flex justify-content-center bg-light pt-3 border-bottom">
-                        <h3> Your Comment <br></br> <p>(Patient can see this comment)</p> </h3>
+                        <h3>Doctor Comment</h3>
                     </div>
                 </div>
                 <div className="row justify-content-center">
@@ -159,7 +159,7 @@ render() {
             <div className="medicineGeneralBox bg-light border-bottom">
                 <div className="row justify-content-center">
                     <div className="col-6 d-flex justify-content-center bg-light pt-3 border-bottom">
-                        <h3> Medicine </h3>
+                        <h3> Medication </h3>
                     </div>
                 </div>
                 <div className="row justify-content-center">
