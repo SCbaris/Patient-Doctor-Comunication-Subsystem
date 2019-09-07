@@ -28,7 +28,7 @@ handleInputChange = event => {
 
     if(this.state.aDateMM>=todaysMonth+2) todaysDay = 1;
     else todaysDay = d.getDate(); // this one give us day
-    if(this.state.aDateYYYY>=todaysYear) todaysMonth =1;
+    if(this.state.aDateYYYY>=todaysYear) todaysMonth =0;
     else todaysMonth = d.getMonth()
     
     const { name, value } = event.target;
