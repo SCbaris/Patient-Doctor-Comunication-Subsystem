@@ -25,4 +25,5 @@ yarn-error.log*
 /support
 /config
 .env
+/images
 
