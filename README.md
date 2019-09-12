@@ -6,37 +6,37 @@ Losing health is most scared situation in human life. Before that, Humans can fe
 
 This subsystem start simle sign up. The page take some information about patient. Such as, Date of Birth, Email, Name, Gender. 
 
-![Image of SignInPage](./images/signIn-page.png)
+![Image of SignInPage](./images/signIn-page.jpg)
 
 After sign up you directly going to Patient Page.
 
-![Image of PatientPage](./images/patient-page.png)
+![Image of PatientPage](./images/patient-page.jpg)
 
 
 This is simple page to Get an Appointment, Log Out and see Hospital Location. If the patient want to see doctor, They click New Appointment and can get an appointment.
 
-![Image of NewAppointmentPage](./images/patientAppointment-page.png)
+![Image of NewAppointmentPage](./images/patientAppointment-page.jpg)
 
 There are 2 section in the appointment page. First one is date of appointment and reason of appointment. 
 These information create new case. This case associate to patient. And shown as un approved.
 Date of appointment section has limitation for proper date. The patient cannot request any appointment day before today.
 Un approved appointment requests shown as "Appointment Requests" on patient page. Patient can remove these requests.
 
-![Image of PatientPage](./images/patient-page.png)
+![Image of PatientPage](./images/patient-page.jpg)
 
 After doctor aprove this appoinment request this case sended to "Your Approved Appointments" section. Patient can open the case.
 
 In case page, Patients can see some information about their sickness. 
 
-![Image of PatientCasePage](./images/patientCase-page.png)
+![Image of PatientCasePage](./images/patientCase-page.jpg)
 
 If patients want to send message to associated doctor, they also can see a message box under the information. They can send a message to doctor. 
 
-![Image of PatientCasePageMessageBox](./images/communication-box.png)
+![Image of PatientCasePageMessageBox](./images/communication-box.jpg)
 
 If the doctor log in, The page directly send to client to "Doctor Page". Doctor only sign in with operator permission. Database mannager or admin will add doctor to database.
 
-![Image of DoctorPage](./images/doctor-page.png)
+![Image of DoctorPage](./images/doctor-page.jpg)
 
 Doctor can see appointment requests, active cases and passive cases. 
 Appointment Request means un approved request. Doctor can aprove it. After doctor approvance this case associate to doctor and sended to active cases section.
@@ -44,7 +44,7 @@ If doctor still working in one case this case shown as active, or doctor can cha
 
 Doctor can open every approved cases. 
 
-![Image of DoctorCasePage](./images/doctorCase-page.png)
+![Image of DoctorCasePage](./images/doctorCase-page.jpg)
 
 Doctor can change Title, comment and medication sections.
 
